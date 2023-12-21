@@ -1,8 +1,6 @@
 const User = require("../models/User");
 const jwt = require('jsonwebtoken');
 
-// const fs = require('fs');
-
 // handle errors
 const handleErrors = (err) => {
   console.log(err.message, err.code);
@@ -110,6 +108,5 @@ module.exports.login_post = async (req, res) => {
 
 module.exports.logout_get = (req, res) => {
  res.cookie('jwt', '', { maxAge: 1 });
-//  res.clearCookie('jwt');
   res.redirect('/');
 }
