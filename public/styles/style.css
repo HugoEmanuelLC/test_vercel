@@ -1,0 +1,623 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+  transition: 0.2s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  background-color: white;
+  pointer-events: visible;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px grey;  */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(234, 234, 234);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: goldenrod;
+}
+
+body {
+  background: black;
+  color: white;
+}
+@media screen and (min-width: 1200px) {
+  body {
+    background-image: linear-gradient(to right, black 50%, white 50%);
+  }
+}
+
+#page {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
+}
+@media screen and (min-width: 1200px) {
+  #page {
+    display: flex;
+  }
+}
+
+main {
+  color: black;
+}
+@media screen and (max-width: 1199px) {
+  main {
+    padding: 8px;
+  }
+}
+main .container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border-radius: 50px 50px 0 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: minmax(5vw, 1fr) repeat(12, minmax(11px, 92.5px)) minmax(5vw, 1fr);
+}
+@media screen and (min-width: 1200px) {
+  main .container {
+    border-radius: 50px 0 0 50px;
+  }
+}
+
+section {
+  grid-column: 1/-1;
+  padding: 50px 0;
+}
+@media screen and (max-width: 1199px) {
+  section {
+    padding: 20px 0 150px;
+  }
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.upload form {
+  background-color: rgb(234, 234, 234);
+  margin: 50px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.upload form input {
+  cursor: pointer;
+}
+.upload form .file {
+  background-color: white;
+  padding: 8px 20px;
+}
+.upload form .file:hover {
+  background-color: rgb(234, 234, 234);
+}
+.upload form .submit {
+  background-color: goldenrod;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.upload form .submit:hover {
+  background-color: red;
+}
+.upload form div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.upload form div:first-child label {
+  margin-right: 20px;
+}
+.upload form div {
+  margin: auto;
+}
+
+header {
+  position: relative;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 1200px) {
+  header {
+    padding-top: 20px;
+    min-width: 200px;
+    max-width: 250px;
+  }
+}
+header .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+}
+@media screen and (min-width: 1200px) {
+  header .container {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0;
+  }
+}
+header .container .bloc_photoUser .photoUser {
+  border: solid 1px goldenrod;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 10px auto 0;
+  overflow: hidden;
+}
+@media screen and (min-width: 1200px) {
+  header .container .bloc_photoUser .photoUser {
+    margin: 30px auto;
+    height: 80px;
+    width: 80px;
+  }
+}
+header .container .bloc_photoUser .photoUser img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (min-width: 1200px) {
+  header .container nav {
+    width: 100%;
+  }
+}
+header .container nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  header .container nav ul {
+    position: absolute;
+    top: 0;
+    left: 110vw;
+    z-index: 10;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header .container nav ul {
+    flex-direction: column;
+  }
+}
+header .container nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 1200px) {
+  header .container nav ul li {
+    height: 100%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .container nav ul li {
+    width: 100%;
+    height: 50px;
+    justify-content: flex-start;
+  }
+}
+header .container nav ul li a {
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 1200px) {
+  header .container nav ul li a {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .container nav ul li a {
+    padding: 5px 50px;
+    width: 100%;
+    height: 50px;
+    justify-content: flex-start;
+  }
+}
+header .container nav ul li a:hover {
+  color: goldenrod;
+}
+@media screen and (max-width: 768px) {
+  header .container nav ul li a:hover {
+    background-color: white;
+  }
+}
+header .container nav #menu {
+  display: none;
+}
+header .container nav #menu ~ label {
+  display: none;
+}
+header .container nav #menu ~ label:hover {
+  color: goldenrod;
+}
+@media screen and (max-width: 768px) {
+  header .container nav #menu ~ label {
+    display: block;
+    cursor: pointer;
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .container nav #menu:checked ~ ul {
+    left: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header .container .a_logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding: 5px 10px;
+  }
+}
+header .container .a_logout:hover {
+  color: red;
+}
+
+#modal {
+  grid-column: 1/-1;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: -110%;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.modal_active {
+  animation-name: modal-on;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
+  transition: 600ms;
+  height: 100%;
+  width: 100%;
+}
+
+.modal_desactive {
+  animation-name: modal-off;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
+  transition: 600ms;
+  height: 0;
+  width: 0;
+}
+
+@keyframes modal-on {
+  0% {
+    border-radius: 0 50% 50% 50%;
+  }
+  100% {
+    border-radius: 0 0 0 0;
+  }
+}
+@keyframes modal-off {
+  0% {
+    border-radius: 0 0 0 0;
+  }
+  100% {
+    border-radius: 0 50% 50% 50%;
+  }
+}
+.btn_modal_off {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 15;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_modal_off i {
+  color: black;
+  margin: auto;
+  font-size: 2rem;
+  transition: 400ms;
+}
+.btn_modal_off:hover i {
+  color: red;
+}
+
+.loginAnSignup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginAnSignup form {
+  background-color: rgb(234, 234, 234);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loginAnSignup form .error {
+  color: goldenrod;
+  margin-bottom: 10px;
+}
+.loginAnSignup form label {
+  width: 100%;
+  margin-top: 10px;
+}
+.loginAnSignup form input {
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  border: none;
+}
+.loginAnSignup form button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+.loginAnSignup form button:hover {
+  background-color: goldenrod;
+  color: red;
+}
+.loginAnSignup form p {
+  font-size: 12px;
+}
+.loginAnSignup form p a {
+  color: red;
+  text-decoration: underline;
+}
+
+.bloc_filters {
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.bloc_filters .titre {
+  margin: auto;
+}
+.bloc_filters .filters {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5%;
+}
+.bloc_filters .filters form select {
+  border: solid red 5px;
+  border: none;
+  padding: 4px;
+}
+.bloc_filters .filters form button {
+  border: none;
+  background-color: goldenrod;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.bloc_filters .filters form button:hover {
+  background-color: red;
+}
+
+.bloc_jobs .jobs {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+.bloc_jobs .jobs .item {
+  border-radius: 20px;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 100%;
+  width: 250px;
+  padding: 10px;
+}
+.bloc_jobs .jobs button {
+  margin: 10px 0 0;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.bloc_jobs .jobs button:hover {
+  background-color: black;
+  color: white;
+}
+
+.title_my_user {
+  margin: 20px 10px 50px;
+}
+
+.blocUserInfos {
+  background-color: rgb(234, 234, 234);
+  padding: 20px;
+  display: flex;
+}
+@media screen and (min-width: 576px) {
+  .blocUserInfos {
+    padding-left: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .blocUserInfos {
+    flex-direction: column;
+  }
+}
+.blocUserInfos .bloc_img {
+  width: 200px;
+}
+@media screen and (max-width: 768px) {
+  .blocUserInfos .bloc_img {
+    width: 100px;
+    height: 100px;
+  }
+  .blocUserInfos .bloc_img img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+.blocUserInfos .bloc_img + div {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.blocUserInfos .bloc_infos {
+  line-height: 1.8;
+  padding-left: 10px;
+  margin: 0 0 10px;
+}
+.blocUserInfos .bloc_infos span {
+  font-weight: bold;
+}
+.blocUserInfos .bloc_update {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .blocUserInfos .bloc_update {
+    flex-wrap: wrap;
+  }
+}
+.blocUserInfos .bloc_update a {
+  background-color: black;
+  color: white;
+  padding: 5px 15px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blocUserInfos .bloc_update a:hover {
+  background-color: goldenrod;
+}
+
+.update_bloc form {
+  padding: 20px;
+  margin: 0 auto;
+  background-color: rgb(234, 234, 234);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.update_bloc input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+.update_bloc .file {
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+}
+.update_bloc .file:hover {
+  background-color: rgb(234, 234, 234);
+}
+.update_bloc .submit {
+  background-color: goldenrod;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+.update_bloc .submit:hover {
+  background-color: red;
+}
+.update_bloc div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.update_bloc .delete {
+  background-color: red;
+  color: white;
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.update_bloc .delete:hover {
+  background-color: goldenrod;
+}/*# sourceMappingURL=style.css.map */

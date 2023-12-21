@@ -1,0 +1,154 @@
+<%- include('partials/header'); -%>
+
+  <section class="loginAnSignup">
+    <form>
+      <h1>Create job</h1>
+  
+      <label for="jobTitle">Job title</label>
+      <input type="text" name="jobTitle" required>
+      <div class="jobTitle error"></div>
+  
+      <label for="company">Company</label>
+      <input type="text" name="company" required>
+      <div class="company error"></div>
+  
+      <label for="website">Website</label>
+      <input type="text" name="website" required>
+      <div class="website error"></div>
+  
+      <h3>Employer's contact</h3>
+  
+      <label for="name">Name</label>
+      <input type="text" name="name">
+  
+  
+      <label for="email">Email of contact</label>
+      <input type="text" name="email">
+      <div class="email error"></div>
+  
+      <label for="phone">Phone</label>
+      <input type="text" name="phone">
+  
+      <label for="adress">Adress</label>
+      <input type="text" name="adress">
+  
+      <label for="origin">Origin</label>
+      <select name="origin" id="origin" required>
+        <option value="spontaneous">spontaneous application</option>
+        <option value="offer">Job offer</option>
+      </select>
+      <div class="origin error"></div>
+  
+  
+      <label for="status">Status</label>
+      <select name="status" id="status" required>
+        <option value="interested">Interested</option>
+        <option value="sent">CV sent</option>
+        <option value="negative">Negative</option>
+        <option value="interview">Interview</option>
+      </select>
+      <div class="status error"></div>
+  
+      <label for="comments">Comments</label>
+      <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+  
+      <button>Save</button>
+    </form>
+  </section>
+
+  <%- include('partials/footer'); -%>
+
+  <script>
+    const form = document.querySelector('form');
+    const jobTitleError = document.querySelector('.jobTitle.error');
+    const websiteError = document.querySelector('.website.error');
+    const emailError = document.querySelector('.email.error');
+    const originError = document.querySelector('.origin.error');
+    const statusError = document.querySelector('.status.error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // reset errors
+      jobTitleError.textContent = '';
+      websiteError.textContent = '';
+      emailError.textContent = '';
+      originError.textContent = '';
+      statusError.textContent = '';
+
+      // get values
+      const jobTitle = form.jobTitle.value;
+      const website = form.website.value;
+      const company = form.company.value;
+      const nameContact = form.name.value;
+      const emailContact = form.email.value;
+      const phone = form.phone.value;
+      const Address = form.adress.value;
+      const origin = form.origin.value;
+      const statusJob = form.status.value;
+      const comments = form.comments.value;
+
+      if (jobTitle === '' || website === '') {
+        jobTitleError.textContent = 'Please fill out the job title';
+        websiteError.textContent = 'Please fill out the website';
+        emailError.textContent = 'Please enter a valid email';
+        originError.textContent = 'Please fill out the origin';
+        statusError.textContent = 'Please fill out the status';
+      } else {
+        let infoJob = {
+          jobTitle,
+          website,
+          company,
+          nameContact,
+          emailContact,
+          phone,
+          Address,
+          origin,
+          statusJob,
+          comments
+        }
+        console.log(infoJob);
+
+        // FNC CREATE JOB
+        async function createJob(){
+          try {
+            const res = await fetch('/create-job', {
+              method: 'POST',
+              body: JSON.stringify(infoJob),
+              headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            console.log(data);
+            if (data.errors) {
+              jobTitleError.textContent = data.errors.jobTitle;
+              websiteError.textContent = data.errors.website;
+              emailError.textContent = data.errors.email;
+              originError.textContent = data.errors.origin;
+              statusError.textContent = data.errors.status;
+              console.log(data.errors.email);
+            }
+            else {
+              location.assign('/');
+            }
+
+          }
+          catch (err) {
+            console.log(err);
+          }
+        }
+
+        // SI EXISTE LA VALUE PASSWORD, verifier si c'est un email :
+        if (emailContact) {
+          const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+          if (!emailRegex.test(emailContact)) {
+            emailError.textContent = 'Please enter a valid email';
+          }else{
+            createJob();
+          }
+        }
+        else {
+            createJob();
+        } 
+      }
+    });
+  </script>

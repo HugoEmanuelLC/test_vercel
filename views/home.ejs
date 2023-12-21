@@ -1,0 +1,157 @@
+<%- include('partials/header'); -%>
+
+<section>
+  <h2>List de jobs :</h2>
+<% if (user) { %>
+  <div class="bloc_filters">
+    <h2 class="titre">Filter by:</h2>
+    <div class="filters">
+      <form>
+        <div class="filter">
+          <div><label for="filterStatus">Status</label></div>
+          <select name="filterStatus" id="filterStatus" >
+            <option value=""></option>
+            <option value="interested">Interested</option>
+            <option value="sent">CV sent</option>
+            <option value="negative">Negative</option>
+            <option value="interview">Interview</option>
+          </select>
+        </div>
+        <div class="filter">
+          <div><label for="filterOrigin">Origin</label></div>
+          <select name="filterOrigin" id="filterOrigin" >
+            <option value=""></option>
+            <option value="spontaneous">spontaneous application</option>
+            <option value="offer">Job offer</option>
+          </select>
+        </div>
+
+        <button class="btn_filter">filtrer</button>
+      </form>
+    </div>
+  </div>
+  <div class="bloc_jobs">
+    <div class="jobs"></div>
+  </div>
+
+<% } %>
+</section>
+
+<%- include('partials/footer'); -%>
+
+
+<script>
+let tableauListStatus = ["interested", "sent", "negative", "interview"];
+let tableauListOrigin = ["spontaneous", "offer"];
+let tableauListJobs = [];
+
+let form = document.querySelector('form')
+const jobsList = document.querySelector('.jobs');
+
+  async function fetchData(status = "", origin = "") {
+    try {
+      const response = await fetch('/list-jobs');
+      const data = await response.json();
+      console.log(data);
+      if (data.length === 0) {
+        jobsList.innerHTML = '<p>No jobs found</p>';
+
+      } else {
+          tableauListJobs = [];
+          jobsList.innerHTML = '';
+
+        if (status !== "" || origin !== "") {
+          data.forEach(job => {
+            if (origin == job.origin[0] || status == job.statusJob[0]) {
+              tableauListJobs.push(job);
+              }
+          });
+          tableauListJobs.forEach(item => {
+            createHtml(item);
+          });
+
+        } else {
+          data.forEach(job => {
+            tableauListJobs.push(job);
+          });
+          tableauListJobs.forEach(job => {
+            createHtml(job);
+          });
+        }
+      }
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      jobsList.innerHTML = '<p>Probleme de server</p>';
+    }
+  }
+  fetchData();
+
+  function createHtml(job) {
+          const listItem = document.createElement('div');
+          listItem.classList.add('recipe');
+
+          const date = document.createElement('p');
+            const dateObj = new Date(job.date);
+            const day = dateObj.getDate();
+            const month = dateObj.getMonth() + 1;
+            const year = dateObj.getFullYear();
+            date.textContent = `${day}/${month}/${year}`;
+
+          const title = document.createElement('h4');
+          title.textContent = job.jobTitle;
+
+          const company = document.createElement('p');
+          company.textContent = job.company;
+
+          const origin = document.createElement('p');
+          origin.textContent = job.origin;
+
+          const status = document.createElement('p');
+          status.textContent = job.statusJob;
+
+          const comment = document.createElement('p');
+          comment.textContent = job.comment;
+
+          const del = document.createElement('button');
+          del.classList.add('delete');
+          del.textContent = "Delete";
+          del.setAttribute('data-id', job._id);
+
+          const details = document.createElement('button');
+          details.classList.add('details');
+          details.textContent = "Details";
+          details.setAttribute('data-id', job._id);
+
+          listItem.append(date, title, company, origin, status, comment, del, details);
+          jobsList.appendChild(listItem);
+  }
+
+    // delete | detail => profile
+    document.addEventListener('click', async (e) => {
+
+        if (e.target.matches('.delete')) {
+          try {
+            const res = await fetch('/job', {
+                method: 'DELETE',
+                body: JSON.stringify({_id: e.target.dataset.id}),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            console.log(data);
+            location.assign('/');
+          }
+          catch (err) {
+              console.log(err);
+          }
+
+        }else if(e.target.matches('.details')){
+          
+        }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      fetchData(form.filterStatus.value, form.filterOrigin.value);
+    })
+</script>

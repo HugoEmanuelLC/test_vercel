@@ -1,0 +1,149 @@
+
+.title_my_user{
+    margin: 20px 10px 50px;
+}
+
+.blocUserInfos{
+    // @include borderTest(red);
+    background-color: $color_40;
+    padding: 20px;
+    display: flex;
+    @include Phones{
+        padding-left: 50px;
+    }
+
+    @include Phones_max{
+        flex-direction: column;
+        // align-items: center;
+    }
+    
+    .bloc_img{
+        width: 200px;
+
+        @include Phones_max{
+            // @include borderTest(red);
+            width: 100px;
+            height: 100px;
+            
+
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        & + div{
+            // @include borderTest(green);
+            padding: 10px;
+            @include Dfx_JCsb_AIc;
+            flex-direction: column;
+        }
+    }
+
+    .bloc_infos{
+        // @include borderTest(yellow);
+        // background-color: $color_40;
+        line-height: 1.8;
+        padding-left: 10px;
+        margin: 0 0 10px;
+
+        span{
+            font-weight: bold;
+        }
+    }
+
+    .bloc_update{
+        // @include borderTest(blue);
+        // background-color: $color_40;
+        width: 100%;
+        @include Dfx_JCsa_AIc;
+        @include Phones_max{
+            flex-wrap: wrap;
+        }
+
+        a{
+            background-color: $color_60;
+            color: $color_50;
+            padding: 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+            @include Dfx_JCc_AIc;
+            &:hover{
+                background-color: $color_10;
+                // color: $color_30;
+            }
+        }
+    }
+}
+
+.update_bloc{
+    // @include borderTest(red);
+    // background-color: $color_40;
+    // padding: 20px;
+    // margin: 20px 0;
+    // @include Dfx_JCc_AIc;
+    // flex-direction: column;
+    // gap: 5px;
+
+    form{
+        // @include borderTest(green);
+        padding: 20px;
+        margin: 0 auto;
+        background-color: $color_40;
+        width: 100%;
+        max-width: 500px;
+        @include Dfx_JCc_AIc;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    input{
+        padding: 5px 10px;
+        border-radius: 5px;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+    }
+
+    .file{
+        background-color: $color_50;
+        padding: 8px 20px;
+        border-radius: 4px;
+
+        &:hover{
+            background-color: $color_40;
+        }
+    }
+
+    .submit{
+        background-color: $color_10;
+        color: $color_50;
+        padding: 8px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: none;
+
+        &:hover{
+            background-color: $color_30;
+        }
+    }
+
+    div:first-child{
+        @include Dfx_JCc_AIc;
+        flex-direction: column;
+    }
+
+    .delete{
+        background-color: $color_30;
+        color: $color_50;
+        padding: 6px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+
+        &:hover{
+            background-color: $color_10;
+        }
+    }
+}

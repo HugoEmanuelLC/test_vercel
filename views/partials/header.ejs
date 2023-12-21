@@ -1,0 +1,71 @@
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ICONS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+
+  <link rel="stylesheet" href="/styles/style.css">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <div id="page">
+    <header>
+      <div class="container">
+          <% if (user) { %>
+            <div class="bloc_photoUser">
+              <p><%= user.firstname %> <%= user.lastname %></p>
+              <div class="photoUser">
+                <img src="<%= user.profilpicture %>" alt="">
+              </div>
+            </div>
+            <nav>
+              <input type="checkbox" name="menu" id="menu">
+              <label for="menu"><i class='bx bx-menu'></i></label>
+              
+              <ul>
+                <li><a href="/"><i class='bx bxs-home'></i> &nbsp; Home</a></li>
+                <li><a href="/user-profile"><i class='bx bxs-user'></i> &nbsp; Profile</a></li>
+                <li><a href="/create-job"><i class='bx bx-add-to-queue'></i> &nbsp; Create Job</a></li>
+              </ul>
+            </nav>
+
+            <a class="a_logout" href="/logout"><i class='bx bx-log-out-circle'></i> &nbsp; Log out</a>
+
+          <% } else { %> 
+            
+            <div class="bloc_photoUser">
+              <p></p>
+              <div class="photoUser">
+                <img src="https://st2.depositphotos.com/1002277/5515/i/450/depositphotos_55150353-stock-photo-admin-cubics.jpg" alt="">
+              </div>
+            </div>
+            <nav> 
+              <input type="checkbox" name="menu" id="menu">
+              <label for="menu"><i class='bx bx-menu'></i></label>
+              
+              <ul>
+                <li><a href="/login"><i class='bx bx-log-in-circle' ></i> &nbsp; Log in</a></li>
+                <li><a href="/signup" class="btn"><i class='bx bxs-user-plus'></i> &nbsp; Sign up</a></li>
+              </ul>
+            </nav>
+          <% } %>
+      </div>
+    </header>
+
+<script>
+  document.querySelector('nav').addEventListener('click', () => {
+    if (document.querySelector('nav').querySelector('#menu').checked == true) {
+      document.querySelector('nav').querySelector('#menu').checked = false;
+    } else {
+      document.querySelector('nav').querySelector('#menu').checked = true;
+    }
+  })
+</script>
+
+    <main>
+      <div class="container">

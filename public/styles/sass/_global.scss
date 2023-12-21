@@ -1,0 +1,110 @@
+body{
+    background: $color_60;
+    
+    color: white;
+    @include Larges{
+        background-image: linear-gradient(to right, $color_60 50%, $color_50 50%);
+    };
+}
+
+#page{
+    // @include borderTest(blue);
+    backdrop-filter: blur(10px);
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100vh;
+    overflow: hidden;
+    @include Larges{
+        display: flex;
+    };
+}
+
+main{
+    color: black;
+    // padding: 10px;
+    @include Larges_max{
+        padding: 8px;
+    };
+    
+    .container{
+        // @include borderTest(red);
+        background-color: $color_50;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        border-radius: 50px 50px 0 0 ;
+        overflow-y: auto;
+        @include container;
+        @include Larges{
+            border-radius: 50px 0 0 50px;
+        };
+    }
+}
+
+section{
+    // @include borderTest(red);
+    grid-column: 1/-1;
+    // position: relative;
+    padding: 50px 0;
+    @include Larges_max{
+        padding: 20px 0 150px;
+    };
+}
+
+.upload{
+    // @include borderTest(blue);
+    @include Dfx_JCc_AIfs;
+
+    form{
+        // @include borderTest(green);
+        background-color: $color_40;
+        margin: 50px 0;
+        padding: 20px;
+        @include Dfx_JCc_AIc;
+        flex-direction: column;
+        gap: 20px;
+
+        input{
+            cursor: pointer;
+        }
+
+        .file{
+            background-color: $color_50;
+            padding: 8px 20px;
+
+            &:hover{
+                background-color: $color_40;
+            }
+        }
+
+        .submit{
+            background-color: $color_10;
+            color: $color_50;
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+
+            &:hover{
+                background-color: $color_30;
+            }
+        }
+
+        div:first-child{
+            // @include borderTest(green);
+            // width: 100%;
+            // margin-bottom: 20px;
+            @include Dfx_JCc_AIc;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            label{
+                // @include borderTest(green);
+                margin-right: 20px;
+            }
+        }
+        div{
+            // @include borderTest(green);
+            margin: auto;
+        }
+    }
+}

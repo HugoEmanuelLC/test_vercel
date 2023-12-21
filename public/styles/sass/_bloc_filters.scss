@@ -1,0 +1,38 @@
+.bloc_filters{
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+
+    .titre{
+        margin: auto;
+    }
+
+    .filters{
+        padding: 10px;
+        @include Dfx_JCc_AIfs;
+        gap: 5%;
+
+        form{
+            select{
+                border: solid red 5px;
+                border: none;
+                padding: 4px;
+            }
+            button{
+                border: none;
+                background-color: $color_10;
+                color: $color_50;
+                padding: 4px;
+                border-radius: 4px;
+                margin-top: 10px;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: $color_30;
+                }
+            }
+        }
+    }
+}

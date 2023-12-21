@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+<section class="upload">
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div>
+            <label>Upload profile picture</label>
+            <input type="file" class="file" name="profile-file" required/>
+        </div>
+        <div>
+            <input type="submit" class="submit" value="Upload" />
+        </div>
+    </form>
+</section>
+
+<%- include('partials/footer'); -%>
+
